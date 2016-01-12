@@ -1,12 +1,12 @@
 var NumberInput = React.createClass({
   handleIncrement: function() {
-    if(+this.props.value + 1 <= this.props.max) {
-      this.props.onUpdate(+this.props.value + 1);
+    if(this.props.value + 1 <= this.props.max) {
+      this.props.onUpdate(this.props.value + 1);
     }
   },
   handleDecrement: function() {
-    if(+this.props.value - 1 >= this.props.min) {
-      this.props.onUpdate(+this.props.value - 1);
+    if(this.props.value - 1 >= this.props.min) {
+      this.props.onUpdate(this.props.value - 1);
     }
   },
   render: function() {
@@ -24,8 +24,8 @@ var NumberInput = React.createClass({
 var PomodoroClock = React.createClass({
   getInitialState: function() {
     return {
-      sessionLength: this.props.initialSession,
-      breakLength: this.props.initialBreak,
+      sessionLength: +this.props.initialSession || 25,
+      breakLength: +this.props.initialBreak || 5,
       running: false,
       mode: 'session',
       timeRemaining: 0
