@@ -1,4 +1,10 @@
 var PomodoroClock = React.createClass({
+  getInitialState: function() {
+    return {
+      sessionLength: this.props.initialSession,
+      breakLength: this.props.initialBreak
+    };
+  },
   render: function() {
     return (
       <div>
@@ -9,6 +15,6 @@ var PomodoroClock = React.createClass({
 });
 
 ReactDOM.render(
-  <PomodoroClock />,
+  <PomodoroClock initialSession="25" initialBreak="5" />,
   document.getElementById('content')
 );
