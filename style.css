@@ -57,15 +57,25 @@ button {
   font-family: 'Roboto', sans-serif;
   font-size: 100%;
 }
+
 button:disabled {
   color: #fff;
 }
+
 button:focus {
   outline: none;
 }
 
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
-  background-color: #666;
+  background-color: #333;
   color: #fff;
   font-family: 'Roboto', sans-serif;
 }
@@ -89,9 +99,37 @@ body {
 
 .counter button {
   width: 30px;
+  cursor: pointer;
 }
 
 .counter .value {
   font-size: 1.3em;
   line-height: 1.5em;
+}
+
+.countdown {
+  height: 200px;
+  border-radius: 100px;
+  border: 2px solid #aaa;
+  text-align: center;
+  padding-top: 50px;
+  cursor: pointer;
+}
+
+.countdown.session {
+  border: 2px solid #2f2;
+}
+
+.countdown.break {
+  border: 2px solid #f22;
+}
+
+.countdown h2 {
+  text-transform: capitalize;
+  font-size: 2em;
+}
+
+.time-remaining {
+  font-size: 2.5em;
+  line-height: 2em;
 }

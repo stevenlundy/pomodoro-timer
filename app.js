@@ -117,10 +117,9 @@ var PomodoroClock = React.createClass({
         <NumberInput max={60} min={1} onUpdate={this.setSessionLength} value={this.state.sessionLength} disabled={this.state.running}>
           <h3>Session Length</h3>
         </NumberInput>
-        <div className="countdown">
+        <div className={"countdown " + this.state.mode} onClick={this.toggleTimer}>
           <h2>{this.state.mode}</h2>
           <div className="time-remaining">{this.formatTime(this.state.timeRemaining)}</div>
-          <button onClick={this.toggleTimer}>Start/Stop</button>
         </div>
       </div>
     );
