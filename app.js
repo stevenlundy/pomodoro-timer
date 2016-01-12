@@ -110,7 +110,7 @@ var PomodoroClock = React.createClass({
 
   render: function() {
     return (
-      <div class="pomodoro">
+      <div className="pomodoro">
         <NumberInput max={60} min={1} onUpdate={this.setBreakLength} value={this.state.breakLength} disabled={this.state.running}>
           <h3>Break Length</h3>
         </NumberInput>

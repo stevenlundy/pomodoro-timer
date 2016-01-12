@@ -70,3 +70,28 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.pomodoro {
+  width: 200px;
+  height: 400px;
+  margin: 100px auto;
+}
+
+.counter {
+  width: 100px;
+  text-align: center;
+  display: inline-block;
+}
+
+.counter h3 {
+  text-transform: uppercase;
+  font-size: 0.7em
+}
+
+.counter button {
+  width: 30px;
+}
+
+.counter .value {
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
