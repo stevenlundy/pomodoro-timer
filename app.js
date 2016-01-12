@@ -11,7 +11,7 @@ var NumberInput = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className="counter">
         {this.props.children}
         <button className="up" onClick={this.handleDecrement} disabled={this.props.disabled}>-</button>
         <span className="value">{this.props.value}</span>
@@ -110,11 +110,11 @@ var PomodoroClock = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <NumberInput className="counter" max={60} min={1} onUpdate={this.setBreakLength} value={this.state.breakLength} disabled={this.state.running}>
+      <div class="pomodoro">
+        <NumberInput max={60} min={1} onUpdate={this.setBreakLength} value={this.state.breakLength} disabled={this.state.running}>
           <h3>Break Length</h3>
         </NumberInput>
-        <NumberInput className="counter" max={60} min={1} onUpdate={this.setSessionLength} value={this.state.sessionLength} disabled={this.state.running}>
+        <NumberInput max={60} min={1} onUpdate={this.setSessionLength} value={this.state.sessionLength} disabled={this.state.running}>
           <h3>Session Length</h3>
         </NumberInput>
         <div className="countdown">
