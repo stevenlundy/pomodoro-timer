@@ -1,3 +1,26 @@
+var NumberInput = React.createClass({
+  handleIncrement: function() {
+    if(+this.props.value + 1 <= this.props.max) {
+      this.props.onUpdate(+this.props.value + 1);
+    }
+  },
+  handleDecrement: function() {
+    if(+this.props.value - 1 >= this.props.min) {
+      this.props.onUpdate(+this.props.value - 1);
+    }
+  },
+  render: function() {
+    return (
+      <div>
+        {this.props.children}
+        <button onClick={this.handleDecrement} disabled={this.props.disabled}>-</button>
+        <span>{this.props.value}</span>
+        <button onClick={this.handleIncrement} disabled={this.props.disabled}>+</button>
+      </div>
+    );
+  }
+});
+
 var PomodoroClock = React.createClass({
   getInitialState: function() {
     return {
@@ -25,6 +48,20 @@ var PomodoroClock = React.createClass({
     this.setState({
       timeRemaining: 60 * numMinutes
     });
+  },
+
+  setBreakLength: function(value) {
+    this.setState({
+      breakLength: value
+    });
+  },
+
+  setSessionLength: function(value) {
+    this.setState({
+      sessionLength: value,
+      mode: 'session'
+    });
+    this.setTimer(value);
   },
 
   toggleTimer: function() {
@@ -74,6 +111,12 @@ var PomodoroClock = React.createClass({
   render: function() {
     return (
       <div>
+        <NumberInput max={60} min={1} onUpdate={this.setBreakLength} value={this.state.breakLength} disabled={this.state.running}>
+          Break Length
+        </NumberInput>
+        <NumberInput max={60} min={1} onUpdate={this.setSessionLength} value={this.state.sessionLength} disabled={this.state.running}>
+          Session Length
+        </NumberInput>
         {this.state.mode}
         {this.formatTime(this.state.timeRemaining)}
         <button onClick={this.toggleTimer}>Start/Stop</button>
