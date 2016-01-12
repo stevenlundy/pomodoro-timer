@@ -16,9 +16,7 @@ var PomodoroClock = React.createClass({
           timeRemaining: this.state.timeRemaining - 1
         });
       } else {
-        this.setState({
-          running: false
-        });
+        this.switchMode();
       }
     }
   },
@@ -33,6 +31,20 @@ var PomodoroClock = React.createClass({
     this.setState({
       running: !this.state.running
     });
+  },
+
+  switchMode: function() {
+    if(this.state.mode === 'session') {
+      this.setState({
+        mode: 'break'
+      });
+      this.setTimer(this.state.breakLength);
+    } else {
+      this.setState({
+        mode: 'session'
+      });
+      this.setTimer(this.state.sessionLength);
+    }
   },
 
   formatTime: function(seconds) {
@@ -62,6 +74,7 @@ var PomodoroClock = React.createClass({
   render: function() {
     return (
       <div>
+        {this.state.mode}
         {this.formatTime(this.state.timeRemaining)}
         <button onClick={this.toggleTimer}>Start/Stop</button>
       </div>
